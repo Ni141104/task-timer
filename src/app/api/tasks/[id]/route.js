@@ -13,19 +13,24 @@ export const PUT = async (req) => {
         const currentTime = new Date();
 
         if (action === 'start' && !task.isRunning) {
+            console.log("backend start occurs");
             task.isRunning = true;
-            task.startTime = currentTime;
+            task.startTime = currentTime; 
         } else if (action === 'pause' && task.isRunning) {
-            task.elapsed += elapsedTime || (currentTime - task.startTime); 
+        
+            task.elapsed = elapsedTime;
             task.isRunning = false;
+            task.startTime = null; 
         } else if (action === 'complete') {
             if (task.isRunning) {
-                task.elapsed += currentTime - task.startTime;
+         
+                task.elapsed = elapsedTime;
             }
             task.isRunning = false;
             task.isCompleted = true;
             task.startTime = null; 
         }
+        
 
         await task.save();
         return new Response(JSON.stringify(task), { status: 200 });  
