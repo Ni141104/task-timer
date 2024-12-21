@@ -34,9 +34,7 @@ const TaskList = () => {
         }
     };
 
-    const handleCompleteTask = (taskId) => {
-        setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
-    };
+
 
     return (
         <div className="max-w-3xl mx-auto p-6">
@@ -57,7 +55,7 @@ const TaskList = () => {
             </div>
             <div className="space-y-4">
                 {tasks.map((task) => (
-                    <Task key={task._id} task={task} onComplete={handleCompleteTask} />
+                    <Task key={task._id} task={task}/>
                 ))}
             </div>
         </div>
