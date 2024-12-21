@@ -1,4 +1,4 @@
-import TaskList from "./components/TaskList";   // Import the TaskList component
+import TaskList from "./components/TaskList";   
 
 export default function Home() {
     return (

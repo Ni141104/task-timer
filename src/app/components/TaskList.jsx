@@ -1,11 +1,10 @@
 'use client'
 import { useEffect, useState } from 'react';
-import Task from './Task'; // Adjust the import based on your component's location
+import Task from './Task'; 
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([]);
 
-    // Fetch tasks from the backend when the component mounts
     useEffect(() => {
         const fetchTasks = async () => {
             try {
@@ -20,7 +19,7 @@ const TaskList = () => {
         };
 
         fetchTasks();
-    }, []);  // Run only once when the component mounts
+    }, []); 
 
     const handleAddTask = async (name) => {
         const res = await fetch('/api/tasks', {
